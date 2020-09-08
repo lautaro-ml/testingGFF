@@ -1,0 +1,25 @@
+--[[
+  ## JSON of Dependencies
+     [ "DynTest" ]
+  ##
+--]]
+-- Main part of the test of Dynamic Script Building
+-- If this is run alone, no initialization is done, and so, external is not defined.
+external = nil
+function onLoad(savedData)
+  if initialize_isDefined then initialize() end
+  if external == nil
+   then print("Dynamic Script Building failed... :(")
+   else print("Dynamic Script Building succeed! :D")
+        print("  external = ", external)
+  end
+end
+
+--[[ CODE expected to be added by dynamic loading:
+function initialize()
+  print("Initializing...")
+  print("  Variable 'external', set")
+  external = "A successful test!"
+end
+initialize_isDefined = true
+--]]
